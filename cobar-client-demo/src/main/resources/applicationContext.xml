@@ -9,6 +9,7 @@
 	default-lazy-init="false">
 
 	<description>Spring公共配置</description>
+	<context:annotation-config/>
 	<context:component-scan base-package="cobar.client.demo"></context:component-scan>
 
 	<bean id="propertyConfigurer"

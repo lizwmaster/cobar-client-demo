@@ -4,7 +4,7 @@
 	<!-- Alias Map Defined -->
 	<typeAlias alias="UserQuery" type="cobar.client.demo.query.UserQuery" />
 	<typeAlias alias="User" type="cobar.client.demo.model.User" />
-	<resultMap id="user" class="User">
+	<resultMap id="User" class="User">
 		<result property="id" column="id" />
 		<result property="taobaoId" column="taobaoId" />
 		<result property="name" column="name" />
@@ -43,7 +43,7 @@
 	</sql>
 
 	<!-- 用#号会导致druid连接池报错 -->
-	<sql id="userList.order">
+	<sql id="UserList.order">
 		<dynamic prepend=" ORDER BY ">
 			<isNotEmpty property="orderFields">
 				<iterate property="orderFields" conjunction="," open=""
