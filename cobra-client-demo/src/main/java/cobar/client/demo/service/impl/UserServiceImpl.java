@@ -1,14 +1,14 @@
-package cobra.client.demo.service.impl;
+package cobar.client.demo.service.impl;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import cobra.client.demo.common.Result;
-import cobra.client.demo.dao.UserDAO;
-import cobra.client.demo.model.User;
-import cobra.client.demo.query.UserQuery;
-import cobra.client.demo.service.UserService;
+import cobar.client.demo.common.Result;
+import cobar.client.demo.dao.UserDAO;
+import cobar.client.demo.model.User;
+import cobar.client.demo.query.UserQuery;
+import cobar.client.demo.service.UserService;
 
 public class UserServiceImpl implements UserService {
 

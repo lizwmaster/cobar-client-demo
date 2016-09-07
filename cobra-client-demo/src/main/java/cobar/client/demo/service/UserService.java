@@ -1,65 +1,65 @@
-package cobra.client.demo.service;
+package cobar.client.demo.service;
 
 import java.util.List;
 
-import cobra.client.demo.common.Result;
-import cobra.client.demo.model.User;
-import cobra.client.demo.query.UserQuery;
+import cobar.client.demo.common.Result;
+import cobar.client.demo.model.User;
+import cobar.client.demo.query.UserQuery;
 
 public interface UserService {
 
 	/**
-	 * »ù±¾²åÈë
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
 	public Long addUser(User User)throws Exception;
 
 	/**
-	 * ¸ù¾ÝÖ÷¼ü²éÑ¯
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
 	 */
 	public User getUserByKey(Long id)throws Exception;
 
 	/**
-	 * ¸ù¾ÝÖ÷¼üÅúÁ¿²éÑ¯
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
 	 */
 	public List<User> getUserByKeys(List<Long> idList)throws Exception;
 
 	/**
-	 * ¸ù¾ÝÖ÷¼üÉ¾³ý
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
 	 * 
 	 * @return
 	 */
 	public Integer deleteByKey(Long id)throws Exception;
 
 	/**
-	 * ¸ù¾ÝÖ÷¼üÅúÁ¿É¾³ý
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
 	 * 
 	 * @return
 	 */
 	public Integer deleteByKeys(List<Long> idList)throws Exception;
 
 	/**
-	 * ¸ù¾ÝÖ÷¼ü¸üÐÂ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
 	public Integer updateUserByKey(User User)throws Exception;
 
 	/**
-	 * ¸ù¾ÝÌõ¼þ²éÑ¯·ÖÒ³²éÑ¯
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯
 	 * 
 	 * @param UserQuery
-	 *            ²éÑ¯Ìõ¼þ
+	 *            ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	public Result<User> getUserListWithPage(UserQuery UserQuery)throws Exception;
 
 	/**
-	 * ¸ù¾ÝÌõ¼þ²éÑ¯
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
 	 * 
 	 * @param UserQuery
-	 *            ²éÑ¯Ìõ¼þ
+	 *            ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	public List<User> getUserList(UserQuery UserQuery)throws Exception;

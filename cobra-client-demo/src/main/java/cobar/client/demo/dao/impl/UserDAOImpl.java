@@ -1,4 +1,4 @@
-package cobra.client.demo.dao.impl;
+package cobar.client.demo.dao.impl;
 
 import java.sql.SQLException;
 import java.util.Collections;
@@ -11,10 +11,10 @@ import javax.annotation.Resource;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Repository;
 
-import cobra.client.demo.common.Result;
-import cobra.client.demo.dao.UserDAO;
-import cobra.client.demo.model.User;
-import cobra.client.demo.query.UserQuery;
+import cobar.client.demo.common.Result;
+import cobar.client.demo.dao.UserDAO;
+import cobar.client.demo.model.User;
+import cobar.client.demo.query.UserQuery;
 
 @Repository("userDAO")
 public class UserDAOImpl implements UserDAO {

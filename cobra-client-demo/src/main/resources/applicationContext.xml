@@ -9,7 +9,7 @@
 	default-lazy-init="false">
 
 	<description>Spring公共配置</description>
-	<context:component-scan base-package="cobra.client.demo"></context:component-scan>
+	<context:component-scan base-package="cobar.client.demo"></context:component-scan>
 
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -122,7 +122,7 @@
 	<!-- 配置数据源结束 -->
 
 	<!-- 配置路由规则开始 -->
-	<bean id="hashFunction" class="cobra.client.demo.router.HashFunction"></bean>
+	<bean id="hashFunction" class="cobar.client.demo.router.HashFunction"></bean>
 	<bean id="internalRouter"
 		class="com.alibaba.cobar.client.router.config.CobarInteralRouterXmlFactoryBean">
 		<!-- functionsMap是在使用自定义路由规则函数的时候使用 -->

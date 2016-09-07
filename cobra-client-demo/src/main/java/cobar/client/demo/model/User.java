@@ -1,4 +1,4 @@
-package cobra.client.demo.model;
+package cobar.client.demo.model;
 
 import java.util.Date;
 
