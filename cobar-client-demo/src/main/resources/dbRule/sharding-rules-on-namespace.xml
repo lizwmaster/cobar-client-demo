@@ -1,22 +1,23 @@
-
+<?xml version="1.0" encoding="UTF-8"?>     
+<!DOCTYPE rules SYSTEM "rules.dtd">     
 <rules>
 	<rule>
-		<namespace>User</namespace>
+		<namespace>IUser</namespace>
 		<!-- 
 			   表达式如果不使用自定义路由规则函数,而是直接使用   taobaoId%2==0这种的话就不用在文件
 			   中配置<property name="functionsMap">中了
 		-->
-		<shardingExpression>hash.apply(taobaoId) == 0</shardingExpression>
+		<shardingExpression><![CDATA[hash.apply(id)==0]]></shardingExpression>
 		<shards>partition0</shards>
 	</rule>
 	<rule>
-		<namespace>User</namespace>
-		<shardingExpression>hash.apply(taobaoId) == 1</shardingExpression>
+		<namespace>IUser</namespace>
+		<shardingExpression><![CDATA[hash.apply(id)==1]]></shardingExpression>
 		<shards>partition1</shards>
 	</rule>
 	<rule>
-		<namespace>User</namespace>
-		<shardingExpression>hash.apply(taobaoId) == 2</shardingExpression>
+		<namespace>IUser</namespace>
+		<shardingExpression><![CDATA[hash.apply(id)==2]]></shardingExpression>
 		<shards>partition2</shards>
 	</rule>
 	

@@ -11,14 +11,7 @@
 	<description>Spring公共配置</description>
 	<context:annotation-config/>
 	<context:component-scan base-package="cobar.client.demo"></context:component-scan>
-
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location">
-			<value>application.development.properties</value>
-		</property>
-	</bean>
-
+	<context:property-placeholder location="classpath:application.development.properties"/>
 	<!-- 配置数据源开始 -->
 	<bean id="dataSources"
 		class="com.alibaba.cobar.client.datasources.DefaultCobarDataSourceService">
@@ -66,7 +59,7 @@
 		<property name="minIdle" value="5" />
 		<property name="timeBetweenEvictionRunsMillis" value="3000" />
 		<property name="minEvictableIdleTimeMillis" value="300000" />
-		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="validationQuery" value="select 1 from dual" />
 		<property name="testWhileIdle" value="true" />
 		<property name="testOnBorrow" value="false" />
 		<property name="testOnReturn" value="false" />
@@ -76,7 +69,9 @@
 		<!-- <property name="connectionProperties" value="config.decrypt=true" 
 			/> -->
 	</bean>
-
+	<!-- <bean id="dataSource" class="com.p6spy.engine.spy.P6DataSource">
+		<constructor-arg ref="dataSource0"></constructor-arg>
+	</bean> -->
 	<!-- 数据源1 -->
 	<bean id="dataSource1" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
@@ -90,7 +85,7 @@
 		<property name="minIdle" value="5" />
 		<property name="timeBetweenEvictionRunsMillis" value="3000" />
 		<property name="minEvictableIdleTimeMillis" value="300000" />
-		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="validationQuery" value="select 1 from dual" />
 		<property name="testWhileIdle" value="true" />
 		<property name="testOnBorrow" value="false" />
 		<property name="testOnReturn" value="false" />
@@ -112,7 +107,7 @@
 		<property name="minIdle" value="5" />
 		<property name="timeBetweenEvictionRunsMillis" value="3000" />
 		<property name="minEvictableIdleTimeMillis" value="300000" />
-		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="validationQuery" value="select 1 from dual" />
 		<property name="testWhileIdle" value="true" />
 		<property name="testOnBorrow" value="false" />
 		<property name="testOnReturn" value="false" />
@@ -127,6 +122,7 @@
 	<bean id="internalRouter"
 		class="com.alibaba.cobar.client.router.config.CobarInteralRouterXmlFactoryBean">
 		<!-- functionsMap是在使用自定义路由规则函数的时候使用 -->
+		<!-- <property name="enableCache"></property> -->
 		<property name="functionsMap">
 			<map>
 				<entry key="hash" value-ref="hashFunction"></entry>
@@ -158,6 +154,7 @@
 			<value>classpath:/sqlmap-config.xml</value>
 		</property>
 	</bean>
+	
 
 	<!-- 工程里一定要使用此工程模板，不能再使用ibatis原生的api，不然有的情况会不经过cobar的过滤 -->
 	<bean id="sqlMapClientTemplate" class="com.alibaba.cobar.client.CobarSqlMapClientTemplate">
@@ -170,9 +167,6 @@
 		<property name="profileLongTimeRunningSql" value="true" />
 		<property name="longTimeRunningSqlIntervalThreshold" value="3600000" />
 	</bean>
-
-
-
 
 
 </beans>

@@ -16,6 +16,7 @@ import cobar.client.demo.dao.UserDAO;
 import cobar.client.demo.model.User;
 import cobar.client.demo.query.UserQuery;
 
+@SuppressWarnings("deprecation")
 @Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
 
@@ -39,7 +40,7 @@ public class UserDAOImpl implements UserDAO {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("keys", idList);
 		
-		return sqlMapClientTemplate.queryForList("IUser.getContsByKeys");
+		return sqlMapClientTemplate.queryForList("IUser.getUsersByKeys", params);
 	}
 
 	@Override

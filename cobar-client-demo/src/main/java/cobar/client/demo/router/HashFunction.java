@@ -1,5 +1,8 @@
 package cobar.client.demo.router;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * 根据某种自定义的hash算法来进行散列,并根据散列的值进行路由
  *  常见的水平切分规则有:
@@ -10,21 +13,22 @@ package cobar.client.demo.router;
  *
  */
 public class HashFunction{
-	
+	private final Logger logger = LoggerFactory.getLogger(HashFunction.class);
 	/**
 	 * 对三个数据库进行散列分布
 	 * 1、返回其他值，没有在配置文件中配置的，如负数等，在默认数据库中查找
 	 * 2、比如现在配置文件中配置有三个结果进行散列，如果返回为0，那么apply方法只调用一次，如果返回为2，
 	 *   那么apply方法就会被调用三次，也就是每次是按照配置文件的顺序依次的调用方法进行判断结果，而不会缓存方法返回值进行判断
-	 * @param taobaoId
+	 * @param id
 	 * @return
 	 */
-	public int apply(Long taobaoId) {
+	public int apply(Long id) {
 		//先从缓存获取 没有则查询数据库
 		//input 可能是taobaoId，拿taobaoId到缓存里去查用户的DB坐标信息。然后把库的编号输出
-		System.out.println("taobaoId："+taobaoId);
-		int result = (int)(taobaoId % 3);
-		System.out.println("在第"+(result + 1)+"个数据库中");
+		logger.info("id:{}", id);
+		int result = (int)(id % 3);
+		logger.info("在第{}个数据库中", result);
+
 		return result;
 	}
 	

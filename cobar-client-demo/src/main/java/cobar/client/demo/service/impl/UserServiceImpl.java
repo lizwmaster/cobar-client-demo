@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import cobar.client.demo.common.Result;
 import cobar.client.demo.dao.UserDAO;
 import cobar.client.demo.model.User;
 import cobar.client.demo.query.UserQuery;
 import cobar.client.demo.service.UserService;
 
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
 	@Resource

@@ -8,61 +8,21 @@ import cobar.client.demo.query.UserQuery;
 
 public interface UserService {
 
-	/**
-	 * �����
-	 * 
-	 * @return
-	 */
-	public Long addUser(User User)throws Exception;
+	public Long addUser(User user)throws Exception;
 
-	/**
-	 * ��������ѯ
-	 */
 	public User getUserByKey(Long id)throws Exception;
-
-	/**
-	 * �������������ѯ
-	 */
+	
 	public List<User> getUserByKeys(List<Long> idList)throws Exception;
 
-	/**
-	 * �������ɾ��
-	 * 
-	 * @return
-	 */
 	public Integer deleteByKey(Long id)throws Exception;
 
-	/**
-	 * �����������ɾ��
-	 * 
-	 * @return
-	 */
 	public Integer deleteByKeys(List<Long> idList)throws Exception;
 
-	/**
-	 * ����������
-	 * 
-	 * @return
-	 */
-	public Integer updateUserByKey(User User)throws Exception;
+	public Integer updateUserByKey(User user)throws Exception;
 
-	/**
-	 * ���������ѯ��ҳ��ѯ
-	 * 
-	 * @param UserQuery
-	 *            ��ѯ����
-	 * @return
-	 */
-	public Result<User> getUserListWithPage(UserQuery UserQuery)throws Exception;
+	public Result<User> getUserListWithPage(UserQuery userQuery)throws Exception;
 
-	/**
-	 * ���������ѯ
-	 * 
-	 * @param UserQuery
-	 *            ��ѯ����
-	 * @return
-	 */
-	public List<User> getUserList(UserQuery UserQuery)throws Exception;
+	public List<User> getUserList(UserQuery userQuery)throws Exception;
 
 
 }
