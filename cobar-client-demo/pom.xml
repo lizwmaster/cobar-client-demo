@@ -68,11 +68,7 @@
 			<artifactId>spring-orm</artifactId>
 			<version>3.2.3.RELEASE</version>
 		</dependency>
-		<dependency>
-			<groupId>com.alibaba.cobar</groupId>
-			<artifactId>cobar-client</artifactId>
-			<version>1.0.5</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -148,6 +144,11 @@
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc14</artifactId>
 			<version>10.2.0.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.cobar</groupId>
+			<artifactId>cobar-client</artifactId>
+			<version>1.0.5</version>
 		</dependency>
 	</dependencies>
 

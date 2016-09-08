@@ -3,10 +3,6 @@
 <rules>
 	<rule>
 		<namespace>IUser</namespace>
-		<!-- 
-			   表达式如果不使用自定义路由规则函数,而是直接使用   taobaoId%2==0这种的话就不用在文件
-			   中配置<property name="functionsMap">中了
-		-->
 		<shardingExpression><![CDATA[hash.apply(id)==0]]></shardingExpression>
 		<shards>partition0</shards>
 	</rule>
@@ -20,5 +16,4 @@
 		<shardingExpression><![CDATA[hash.apply(id)==2]]></shardingExpression>
 		<shards>partition2</shards>
 	</rule>
-	
 </rules>

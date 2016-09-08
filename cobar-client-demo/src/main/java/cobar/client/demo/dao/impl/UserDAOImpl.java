@@ -15,13 +15,13 @@ import cobar.client.demo.common.Result;
 import cobar.client.demo.dao.UserDAO;
 import cobar.client.demo.model.User;
 import cobar.client.demo.query.UserQuery;
-
 @SuppressWarnings("deprecation")
 @Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
 
 	@Resource
 	private SqlMapClientTemplate sqlMapClientTemplate;
+	
 	
 	@Override
 	public Long addUser(User user) throws SQLException {
