@@ -25,9 +25,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUserByKey(Long id) throws Exception {
+	public User getUserByID(User user) throws Exception {
 		// TODO Auto-generated method stub
-		return userDao.getUserByKey(id);
+		return userDao.getUserByID(user);
+	}
+
+	@Override
+	public User getUserByKey(User user) throws Exception {
+		// TODO Auto-generated method stub
+		return userDao.getUserByKey(user);
 	}
 
 	@Override
@@ -37,9 +43,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Integer deleteByKey(Long id) throws Exception {
+	public Integer deleteByKey(User user) throws Exception {
 		// TODO Auto-generated method stub
-		return userDao.deleteByKey(id);
+		return userDao.deleteByKey(user);
 	}
 
 	@Override

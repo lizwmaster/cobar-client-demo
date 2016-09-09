@@ -10,11 +10,12 @@ public interface UserService {
 
 	public Long addUser(User user)throws Exception;
 
-	public User getUserByKey(Long id)throws Exception;
+	public User getUserByKey(User user)throws Exception;
+	public User getUserByID(User user)throws Exception;
 	
 	public List<User> getUserByKeys(List<Long> idList)throws Exception;
 
-	public Integer deleteByKey(Long id)throws Exception;
+	public Integer deleteByKey(User user)throws Exception;
 
 	public Integer deleteByKeys(List<Long> idList)throws Exception;
 

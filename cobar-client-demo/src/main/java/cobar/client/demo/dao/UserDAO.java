@@ -11,11 +11,12 @@ public interface UserDAO {
 	
 	public Long addUser(User user) throws SQLException;
 	
-	public User getUserByKey(Long id) throws SQLException;
+	public User getUserByKey(User user) throws SQLException;
+	public User getUserByID(User user) throws SQLException;
 	
 	public List<User> getUserByKeys(List<Long> idList) throws SQLException;
 	
-	public Integer deleteByKey(Long id) throws SQLException;
+	public Integer deleteByKey(User user) throws SQLException;
 	
 	public Integer deleteByKeys(List<Long> idList) throws SQLException;
 	

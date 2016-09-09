@@ -25,16 +25,20 @@ public class AppTest {
 	@Test
 	public void testAdd() throws Exception {
 		User user = new User();
-		user.setId(new Long(new Random().nextInt(10000)));
+		Long id = new Long(new Random().nextInt(10000));
+		user.setId(id);
+		logger.info("id : {}",id);
 		user.setName("Tom");
-		Long taobaoId = new Long(new Random().nextInt(10000));
+		Long taobaoId = id;
 		user.setTaobaoId(taobaoId);
 		userService.addUser(user);
 	}
 	@Test
 	public void testGetUserBykey() throws Exception{
-		User user = userService.getUserByKey(2251L);
-		logger.info(user.toString());
+		User user = new User();
+		user.setId(7658L);
+		User user2 = userService.getUserByKey(user);
+		logger.info(user2.toString());
 	}
 	@Test
 	public void testGetUserBykeys() throws Exception{

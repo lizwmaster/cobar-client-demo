@@ -119,6 +119,10 @@
 
 	<!-- 配置路由规则开始 -->
 	<bean id="hashFunction" class="cobar.client.demo.router.HashFunction"></bean>
+	<bean id="modFunction" class="cobar.client.demo.router.ModFunction">
+		<constructor-arg index="0" value="3"></constructor-arg>
+	</bean>
+	
 	<bean id="internalRouter"
 		class="com.alibaba.cobar.client.router.config.CobarInteralRouterXmlFactoryBean">
 		<!-- functionsMap是在使用自定义路由规则函数的时候使用 -->
@@ -126,11 +130,13 @@
 		<property name="functionsMap">
 			<map>
 				<entry key="hash" value-ref="hashFunction"></entry>
+				<entry key="mod" value-ref="modFunction"></entry>
 			</map>
 		</property>
 		<property name="configLocations">
 			<list>
-				<value>classpath:/dbRule/sharding-rules-on-namespace.xml</value>
+<!-- 				<value>classpath:/dbRule/sharding-rules-on-namespace.xml</value>
+ -->				<value>classpath:/dbRule/sharding-rules-on-sqlmap.xml</value>
 			</list>
 		</property>
 	</bean>

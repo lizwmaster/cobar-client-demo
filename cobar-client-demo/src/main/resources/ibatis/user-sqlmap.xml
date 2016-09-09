@@ -5,10 +5,10 @@
 	<typeAlias alias="UserQuery" type="cobar.client.demo.query.UserQuery" />
 	<typeAlias alias="User" type="cobar.client.demo.model.User" />
 	<resultMap id="User" class="User">
-		<result property="id" column="id" />
-		<result property="taobaoId" column="taobaoId" />
-		<result property="name" column="name" />
-		<result property="updTime" column="upd_time" />
+		<result property="id" column="id" jdbcType="DECIMAL"/>
+		<result property="taobaoId" column="taobaoId" jdbcType="DECIMAL"/>
+		<result property="name" column="name" jdbcType="VARCHAR2"/>
+		<result property="updTime" column="upd_time" jdbcType="TIMESTAMP"/>
 	</resultMap>
 	<!-- Select SQL -->
 	<sql id="selector">
@@ -26,14 +26,14 @@
 	<sql id="UserList.where">
 		<dynamic prepend=" WHERE ">
 			<isNotNull property="id" prepend=" AND ">
-				id=#id#
+				id=#id:DECIMAL#
 			</isNotNull>
 			<isNotNull property="taobaoId" prepend=" AND ">
-				taobaoId=#taobaoId#
+				taobaoId=#taobaoId:DECIMAL#
 			</isNotNull>
 			<isNotNull property="name" prepend=" AND ">
 				<isEqual property="nameLike" compareValue="false">
-					name=#name#
+					name=#name:VARCHAR2#
 				</isEqual>
 				<isEqual property="nameLike" compareValue="true">
 					 <![CDATA[  name like '%$name$%' ]]>
@@ -63,10 +63,15 @@
 	</sql>
 
 	<!-- 根据主键查询 -->
-	<select id="getUserByKey" resultMap="User" parameterClass="java.lang.Long">
+	<select id="getUserByKey" resultMap="User" parameterClass="User">
 		SELECT id , taobaoId , name , upd_time FROM IUser
 		WHERE
-		id=#id#
+		id=#id:DECIMAL#
+	</select>
+	<select id="getUserByID" resultMap="User" parameterClass="User">
+		SELECT id , taobaoId , name , upd_time FROM IUser
+		WHERE
+		taobaoId=#taobaoId:DECIMAL#
 	</select>
 	<select id="getUsersByKeys" resultMap="User" parameterClass="hashMap">
 		SELECT id , taobaoId , name , upd_time FROM IUser
@@ -78,10 +83,10 @@
 	</select>
 
 	<!-- 根据主键删除 -->
-	<delete id="deleteByKey" parameterClass="java.lang.Long">
+	<delete id="deleteByKey" parameterClass="User">
 		DELETE FROM IUser
 		WHERE
-		id=#id#
+		id=#id:DECIMAL#
 	</delete>
 
 	<delete id="deleteByKeys">
@@ -98,17 +103,17 @@
 		UPDATE IUser
 		<dynamic prepend="SET">
 			<isNotNull prepend="," property="id">
-				id = #id#
+				id = #id:DECIMAL#
 			</isNotNull>
 			<isNotNull prepend="," property="taobaoId">
-				taobaoId = #taobaoId#
+				taobaoId = #taobaoId:DECIMAL#
 			</isNotNull>
 			<isNotNull prepend="," property="name">
-				name = substring(#name#,1,20)
+				name = substr(#name:VARCHAR2#,1,20)
 			</isNotNull>
 		</dynamic>
 		WHERE
-		id=#id#
+		id=#id:DECIMAL#
 	</update>
 	<!-- 分页 -->
 	<select id="getUserListWithPage" parameterClass="UserQuery"

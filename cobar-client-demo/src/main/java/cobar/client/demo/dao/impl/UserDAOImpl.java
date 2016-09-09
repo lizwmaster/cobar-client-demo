@@ -30,10 +30,10 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User getUserByKey(Long id) throws SQLException {
-		return (User) sqlMapClientTemplate.queryForObject("IUser.getUserByKey", id);
+	public User getUserByKey(User user) throws SQLException {
+		return (User) sqlMapClientTemplate.queryForObject("IUser.getUserByKey", user);
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getUserByKeys(List<Long> idList) throws SQLException {
@@ -44,8 +44,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Integer deleteByKey(Long id) throws SQLException {
-		return sqlMapClientTemplate.delete("IUser.deleteByKey", id);
+	public Integer deleteByKey(User user) throws SQLException {
+		return sqlMapClientTemplate.delete("IUser.deleteByKey", user);
 	}
 
 	@Override
@@ -91,6 +91,11 @@ public class UserDAOImpl implements UserDAO {
 		}
 		
 		return (List<User>) this.sqlMapClientTemplate.queryForList("IUser.getUserList", userQuery);
+	}
+
+	@Override
+	public User getUserByID(User user) throws SQLException {
+		return (User) sqlMapClientTemplate.queryForObject("IUser.getUserByID", user);
 	}
 
 }
