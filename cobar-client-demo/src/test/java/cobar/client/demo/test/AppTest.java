@@ -7,21 +7,16 @@ import java.util.Random;
 import javax.annotation.Resource;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cobar.client.demo.model.User;
 import cobar.client.demo.service.UserService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext-1.0.xml"})
-public class AppTest {
-	private final Logger logger = LoggerFactory.getLogger("AppTest");
+public class AppTest extends BaseTest{
 	@Resource
 	private UserService userService;
+	
 	@Test
 	public void testAdd() throws Exception {
 		User user = new User();

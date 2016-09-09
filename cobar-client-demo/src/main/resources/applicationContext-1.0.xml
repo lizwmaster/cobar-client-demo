@@ -13,39 +13,6 @@
 	<context:component-scan base-package="cobar.client.demo"></context:component-scan>
 	<context:property-placeholder location="classpath:application.development.properties"/>
 	<!-- 配置数据源开始 -->
-	<bean id="dataSources"
-		class="com.alibaba.cobar.client.datasources.DefaultCobarDataSourceService">
-		<property name="dataSourceDescriptors">
-			<set>
-				<bean
-					class="com.alibaba.cobar.client.datasources.CobarDataSourceDescriptor">
-					<property name="identity" value="partition0" />
-					<property name="targetDataSource" ref="dataSource0" />
-					<property name="targetDetectorDataSource" ref="dataSource0" />
-				</bean>
-				<bean
-					class="com.alibaba.cobar.client.datasources.CobarDataSourceDescriptor">
-					<property name="identity" value="partition1" />
-					<property name="targetDataSource" ref="dataSource1" />
-					<property name="targetDetectorDataSource" ref="dataSource1" />
-				</bean>
-				<bean
-					class="com.alibaba.cobar.client.datasources.CobarDataSourceDescriptor">
-					<property name="identity" value="partition2" />
-					<property name="targetDataSource" ref="dataSource2" />
-					<property name="targetDetectorDataSource" ref="dataSource2" />
-				</bean>
-			</set>
-		</property>
-		<property name="haDataSourceCreator">
-			<bean
-				class="com.alibaba.cobar.client.datasources.ha.FailoverHotSwapDataSourceCreator">
-				<property name="detectingSql"
-					value="update cobarha set timeflag=CURRENT_TIMESTAMP()" />
-			</bean>
-		</property>
-	</bean>
-
 	<!-- 数据源0 -->
 	<bean id="dataSource0" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
@@ -115,6 +82,39 @@
 		<property name="maxPoolPreparedStatementPerConnectionSize"
 			value="20" />
 	</bean>
+	
+	<bean id="dataSources"
+		class="com.alibaba.cobar.client.datasources.DefaultCobarDataSourceService">
+		<property name="dataSourceDescriptors">
+			<set>
+				<bean
+					class="com.alibaba.cobar.client.datasources.CobarDataSourceDescriptor">
+					<property name="identity" value="partition0" />
+					<property name="targetDataSource" ref="dataSource0" />
+					<property name="targetDetectorDataSource" ref="dataSource0" />
+				</bean>
+				<bean
+					class="com.alibaba.cobar.client.datasources.CobarDataSourceDescriptor">
+					<property name="identity" value="partition1" />
+					<property name="targetDataSource" ref="dataSource1" />
+					<property name="targetDetectorDataSource" ref="dataSource1" />
+				</bean>
+				<bean
+					class="com.alibaba.cobar.client.datasources.CobarDataSourceDescriptor">
+					<property name="identity" value="partition2" />
+					<property name="targetDataSource" ref="dataSource2" />
+					<property name="targetDetectorDataSource" ref="dataSource2" />
+				</bean>
+			</set>
+		</property>
+		<property name="haDataSourceCreator">
+			<bean
+				class="com.alibaba.cobar.client.datasources.ha.FailoverHotSwapDataSourceCreator">
+				<property name="detectingSql"
+					value="update cobarha set timeflag=CURRENT_TIMESTAMP()" />
+			</bean>
+		</property>
+	</bean>
 	<!-- 配置数据源结束 -->
 
 	<!-- 配置路由规则开始 -->
@@ -135,8 +135,8 @@
 		</property>
 		<property name="configLocations">
 			<list>
-<!-- 				<value>classpath:/dbRule/sharding-rules-on-namespace.xml</value>
- -->				<value>classpath:/dbRule/sharding-rules-on-sqlmap.xml</value>
+				<value>classpath:/dbRule/sharding-rules-on-namespace.xml</value>
+				<value>classpath:/dbRule/sharding-rules-on-sqlmap.xml</value>
 			</list>
 		</property>
 	</bean>
