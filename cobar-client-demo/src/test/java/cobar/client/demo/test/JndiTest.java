@@ -29,31 +29,33 @@ public class JndiTest extends BaseTest{
 		System.setProperty(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.rmi.registry.RegistryContextFactory");
 		System.setProperty(Context.PROVIDER_URL, "rmi://localhost:1099");
 		
-		InitialContext context = new InitialContext();
+		InitialContext context0 = new InitialContext();
 		
 		Reference ref0 = new Reference("javax.sql.DataSource", "org.apache.commons.dbcp.BasicDataSourceFactory", null);
 		ref0.add(new StringRefAddr("driverClassName", "oracle.jdbc.driver.OracleDriver"));
 		ref0.add(new StringRefAddr("url", "jdbc:oracle:thin:@localhost:1521/xe"));
 		ref0.add(new StringRefAddr("username", "dbtest1"));
 		ref0.add(new StringRefAddr("password", "root"));
+		context0.rebind("jdbc/dbtest1", ref0);
+		context0.close();
 		
+		InitialContext context1 = new InitialContext();
 		Reference ref1 = new Reference("javax.sql.DataSource", "org.apache.commons.dbcp.BasicDataSourceFactory", null);
 		ref1.add(new StringRefAddr("driverClassName", "oracle.jdbc.driver.OracleDriver"));
 		ref1.add(new StringRefAddr("url", "jdbc:oracle:thin:@localhost:1521/xe"));
 		ref1.add(new StringRefAddr("username", "dbtest2"));
 		ref1.add(new StringRefAddr("password", "root"));
+		context1.rebind("jdbc/dbtest2", ref1);
+		context1.close();
 		
+		InitialContext context2 = new InitialContext();
 		Reference ref2 = new Reference("javax.sql.DataSource", "org.apache.commons.dbcp.BasicDataSourceFactory", null);
 		ref2.add(new StringRefAddr("driverClassName", "oracle.jdbc.driver.OracleDriver"));
 		ref2.add(new StringRefAddr("url", "jdbc:oracle:thin:@localhost:1521/xe"));
 		ref2.add(new StringRefAddr("username", "dbtest3"));
 		ref2.add(new StringRefAddr("password", "root"));
-		
-		context.rebind("jdbc/dbtest1", ref0);
-		context.rebind("jdbc/dbtest2", ref1);
-		context.rebind("jdbc/dbtest3", ref2);
-		
-		context.close();
+		context2.rebind("jdbc/dbtest3", ref2);
+		context2.close();
 	}
 	@Test
 	public void testAdd() throws Exception {

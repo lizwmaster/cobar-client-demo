@@ -13,8 +13,8 @@ import cobar.client.demo.model.User;
 import cobar.client.demo.service.UserService;
 
 //@ContextConfiguration(locations={"classpath:applicationContext-1.0.xml"})
-@ContextConfiguration(locations={"classpath:applicationContext-c3p0.xml"})
-//@ContextConfiguration(locations={"classpath:applicationContext-dbcp.xml"})
+//@ContextConfiguration(locations={"classpath:applicationContext-c3p0.xml"})
+@ContextConfiguration(locations={"classpath:applicationContext-dbcp.xml"})
 public class AppTest extends BaseTest{
 	@Resource
 	private UserService userService;
