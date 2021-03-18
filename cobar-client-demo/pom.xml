@@ -141,9 +141,9 @@
 			<version>0.9.1.2</version>
 		</dependency>
 		<dependency>
-			<groupId>com.thoughtworks.xstream</groupId>
-    		<artifactId>xstream</artifactId>
-    		<version>1.4.8</version>
+		  <groupId>com.thoughtworks.xstream</groupId>
+		  <artifactId>xstream</artifactId>
+		  <version>[1.4.15,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
